@@ -81,22 +81,25 @@ def es_numero(val):
 
 
 #Solicitamos entrada al usuario
-numero = int(input("Ingrese un número: "))
+numero = input("Ingrese un número: ")
 
 #Valido si la entrada es un número
-if es_numero(numero) == False: #Validamos si la entrada es un número
+while es_numero(numero) == False: #Validamos si la entrada es un número
     print("Carácter incorrecto, por favor ingrese un número")  # Si no es un número, mostramos el error
-else:
-    # Convertimos la entrada en un número entero
-    numero = int(numero)
+    numero = input("Ingrese un número: ")
 
 
+# Convertimos la entrada en un número entero
+numero = int(numero)
 #Condicional: llamamos funcion segun corresponda (entrada numero positivo o negativo)
 if numero >= 0:
     print(f"El número {numero} en binario es {decimal_a_binario(numero)}")
 
 else: 
     print(f"El número {numero} en binario es {decimal_a_binario_negativo(numero)}")
+
+
+
 
 
 
