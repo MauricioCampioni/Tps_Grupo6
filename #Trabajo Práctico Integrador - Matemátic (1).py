@@ -1,5 +1,6 @@
 #Trabajo Práctico Integrador - Matemática/Programación I
 
+#INICIO PARTE 1 (FER)#
 #Definimos la funcion de pasaje a binario
 def decimal_a_binario(num):
 
@@ -20,6 +21,8 @@ def decimal_a_binario(num):
     #Devuelve el numero binario calculado
     return num_bin
 
+
+
 #Definimos la funcion de pasaje a binario para numeros decimales negativos
 def decimal_a_binario_negativo(num):
     
@@ -31,10 +34,12 @@ def decimal_a_binario_negativo(num):
     
     #Calculamos el número positivo en binario
     bin_pos = decimal_a_binario(num)
-    
-    #Agregamos ceros a la izquierda para completar los bits
-    while len(bin_pos) < bits:
-        bin_pos = "0" + bin_pos
+#FIN PARTE 1 (FER)#
+
+#INICIO PARTE 2#
+    #Agregamos ceros a la izquierda para completar los bits con zfill por recomendación de la IA para reducir codigo
+    bin_pos = bin_pos.zfill(bits)
+
         
     #Inverti los bits sumandole 1
     complemento_A1 = ""
@@ -50,25 +55,26 @@ def decimal_a_binario_negativo(num):
     complemento_A2 = "" #Resultado final
     resto_suma = 1      #El 1 que le sumamos al complemento A1
     i = bits - 1        #Empieza desde el ultimo bit que esta a la derecha del todo
-    
+        
     
     while i >= 0:
         #Si hay un 1 y tambien un resto, en el resultado va un 0 y el resto queda en 1
-        if bin_pos[i] == "1" and resto_suma == 1:
+        if complemento_A1[i] == "1" and resto_suma == 1:
             complemento_A2 = "0" + complemento_A2
             resto_suma = 1
         #Si hay un 1 y no hay resto, en el resultado va un 1 y el resto queda en 0
-        elif bin_pos[i] == "0" and resto_suma == 1:
+        elif complemento_A1[i] == "0" and resto_suma == 1:
             complemento_A2 = "1" + complemento_A2
             resto_suma = 0
         #Si no hay resto, copia el bit tal cual como estaba
         else:
-            complemento_A2 = bin_pos[i] + complemento_A2
+            complemento_A2 = complemento_A1[i] + complemento_A2
         i -= 1 #Decrementa el contador para ir al siguiente bit a la izquierda
     #Devuelve el binario en el complemento A2    
     return complemento_A2
+#FIN PARTE 2    
     
-    
+#INICIO PARTE 3#    
 def es_numero(val):
     #Si el primer carácter es un signo negativo, lo ignoramos
     if val[0] == '-' and len(val) > 1:  
@@ -85,10 +91,11 @@ numero = input("Ingrese un número: ")
 
 #Valido si la entrada es un número
 while es_numero(numero) == False: #Validamos si la entrada es un número
-    print("Carácter incorrecto, por favor ingrese un número")  # Si no es un número, mostramos el error
+    print("El valor ingresado es incorrecto, por favor ingrese un número")  # Si no es un número, mostramos el error
     numero = input("Ingrese un número: ")
+#FIN PARTE 3#
 
-
+#INCIO PARTE 4#
 # Convertimos la entrada en un número entero
 numero = int(numero)
 #Condicional: llamamos funcion segun corresponda (entrada numero positivo o negativo)
