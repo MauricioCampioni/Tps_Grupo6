@@ -57,16 +57,16 @@ def decimal_a_binario_negativo(num):
     
     while i >= 0:
         #Si hay un 1 y tambien un resto, en el resultado va un 0 y el resto queda en 1
-        if bin_pos[i] == "1" and resto_suma == 1:
+        if complemento_A1[i] == "1" and resto_suma == 1:
             complemento_A2 = "0" + complemento_A2
             resto_suma = 1
         #Si hay un 1 y no hay resto, en el resultado va un 1 y el resto queda en 0
-        elif bin_pos[i] == "0" and resto_suma == 1:
+        elif complemento_A1[i] == "0" and resto_suma == 1:
             complemento_A2 = "1" + complemento_A2
             resto_suma = 0
         #Si no hay resto, copia el bit tal cual como estaba
         else:
-            complemento_A2 = bin_pos[i] + complemento_A2
+            complemento_A2 = complemento_A1[i] + complemento_A2
         i -= 1 #Decrementa el contador para ir al siguiente bit a la izquierda
     #Devuelve el binario en el complemento A2    
     return complemento_A2
